@@ -43,6 +43,7 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
+          cat ~/Library/MobileDevice/Provisioning\ Profiles build_pp.mobileprovision
 
       # - name: Clean iOS App
       #   run: |
@@ -50,9 +51,9 @@ jobs:
       #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
       #     xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
 
-      - name: Build iOS App
-        run: |
-          xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -destination generic/platform=iOS -configuration Release -provisioningProfile "YourProvisioningProfileUUID" -signingStyle "Manual" -allowProvisioningUpdates -signingCertificate "YourSigningCertificateName"
+      # - name: Build iOS App
+      #   run: |
+      #     xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -destination generic/platform=iOS -configuration Release -provisioningProfile "YourProvisioningProfileUUID" -signingStyle "Manual" -allowProvisioningUpdates -signingCertificate "YourSigningCertificateName"
 
       # - name: Build iOS App
       #   env:
