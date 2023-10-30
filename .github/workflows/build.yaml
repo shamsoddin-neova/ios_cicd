@@ -1,7 +1,7 @@
 name: Build And Deploy iOS App To App Store
 on:
   push:
-    branches: master
+    branches: tsalat
 jobs:
   build_and_deploy_ios_app_to_app_store:
     runs-on: macos-13
@@ -11,6 +11,11 @@ jobs:
 
       - name: Setup Xcode
         run: sudo xcode-select -s /Applications/Xcode_15.0.1.app
+
+      - name: Install CocoaPods
+        run: |
+          gem install cocoapods
+          pod install       
 
       - name: Install The Apple Certificate And Provisioning Profile
         env:
@@ -83,8 +88,12 @@ jobs:
         run: |
           xcodebuild archive -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath NeoCal/build/NeoCal.xcarchive
 
-      - name: Export IPA
-        run: xcodebuild -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
+      # - name: Export IPA
+      #   run: xcodebuild -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
           
       # - name: List IPA
       #   run: ls IPA
+
+      - name: Build and Export IPA
+        run: |
+          xcodebuild -exportArchive -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath "./NeoCal"   
