@@ -11,7 +11,7 @@
     <key>provisioningProfiles</key>
     <dict>
         <key>com.neovasolutions.NeoCal</key>
-        <string>ios_distribution</string>
+        <string>$DISTRIBUTION_PROFILE_BASE64</string>
     </dict>
 </dict>
 </plist>
