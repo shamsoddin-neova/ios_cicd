@@ -26,7 +26,7 @@ jobs:
           project-path: ./NeoCal/NeoCal.xcodeproj
           scheme: NeoCal
           output-path: ./NeoCal/build/output.ipa
-          apple-key-id: TD2T3G59AS
+          apple-key-id: 68V56LPT82
           apple-key-issuer-id: 6701bcf4-21c5-4e25-9fd7-76af487a8e20
           team-id: 2ZBVR8AP3W
           team-name: Shashi Ranjan
