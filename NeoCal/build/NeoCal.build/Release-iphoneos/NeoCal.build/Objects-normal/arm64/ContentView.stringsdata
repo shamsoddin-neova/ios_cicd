@@ -1,0 +1,20 @@
+{
+  "source": "/Users/tarique/Documents/Neova/POC/NeoCal/NeoCal/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Enter number 1"
+      },
+      {
+        "comment": "",
+        "key": "Enter number 2"
+      },
+      {
+        "comment": "",
+        "key": "Add"
+      }
+    ]
+  },
+  "version": 1
+}
