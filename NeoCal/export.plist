@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
     <key>method</key>
-    <string>app_store</string>
+    <string>app-store</string>
     <key>distribution</key>
     <string>export</string>
     <key>signingStyle</key>
