@@ -52,7 +52,7 @@ jobs:
 
       - name: Build iOS App
         run: |
-          xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -sdk iphoneos -destination generic/platform=iOS -configuration Debug CODE_SIGN_IDENTITY=$BUILD_CERTIFICATE_BASE64 PROVISIONING_PROFILE="818F4D9AD0D408D8D31E6E93FC1AA08C5532A8E4"
+          xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -sdk iphoneos -destination generic/platform=iOS -configuration Debug CODE_SIGN_IDENTITY=$BUILD_CERTIFICATE_BASE64 PROVISIONING_PROFILE="818F4D9AD0D408D8D31E6E93FC1AA08C5532A8E4" PROVISIONING_PROFILE_SPECIFIER=$BUILD_PROVISION_PROFILE_BASE64
 
       # - name: Build iOS App
       #   env:
