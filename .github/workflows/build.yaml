@@ -42,6 +42,7 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          ls ~/Library/MobileDevice/Provisioning\ Profiles
 
       # - name: Clean iOS App
       #   run: |
@@ -51,7 +52,7 @@ jobs:
 
       - name: Build iOS App
         run: |
-          xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -destination generic/platform=iOS -configuration Release
+          xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -destination generic/platform=iOS -configuration Release -provisioningProfile "YourProvisioningProfileUUID" -signingStyle "Manual" -allowProvisioningUpdates -signingCertificate "YourSigningCertificateName"
 
       # - name: Build iOS App
       #   env:
