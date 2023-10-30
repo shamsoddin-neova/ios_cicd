@@ -19,15 +19,26 @@ jobs:
           xcode-version: 15
 
       - name: Build and archive app
-        uses: sparkfabrik/ios-build-action@v1
+        uses: sparkfabrik/ios-build-action@v2.3.0
         with:
-          export_method: app-store
+          upload-to-testflight: true
+          increment-build-number: true
+          configuration: Release
+          export-method: app-store
+          project-path: ./NeoCal/NeoCal.xcodeproj
+          scheme: NeoCal
+          output-path: ./NeoCal/build/output.ipa
+          apple-key-id: ${{ secrets.APPLE_KEY_ID }}
+          apple-key-issuer-id: ${{ secrets.APPLE_KEY_ISSUER_ID }}
+          apple-key-content: ${{ secrets.APPLE_KEY_CONTENT }}
+          team-id: 2ZBVR8AP3W
+          team-name: Shashi Ranjan
 
       - name: Upload archive to artifact
         uses: actions/upload-artifact@v3
         with:
           name: app-archive
-          path: ipa/*.ipa
+          path: ./NeoCal/build/output.ipa
 
   release_to_app_store:
     needs: build_and_archive
@@ -38,7 +49,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: app-archive
-          path: ipa/*.ipa
+          path: ./NeoCal/build/output.ipa
 
       # - name: Release to App Store
       #   uses: action-bot/appstore-release@v1
