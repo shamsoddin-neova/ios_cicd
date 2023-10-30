@@ -13,10 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Xcode
-        uses: actions/setup-mac@v3
-        with:
-          xcode-version: 15
+      - name: Setup Xcode
+        run: sudo xcode-select -s /Applications/Xcode_15.0.1.app
 
       - name: Build and archive app
         uses: sparkfabrik/ios-build-action@v2.3.0
