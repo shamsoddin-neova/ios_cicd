@@ -26,11 +26,12 @@ jobs:
           project-path: ./NeoCal/NeoCal.xcodeproj
           scheme: NeoCal
           output-path: ./NeoCal/build/output.ipa
-          apple-key-id: ${{ secrets.APPLE_KEY_ID }}
-          apple-key-issuer-id: ${{ secrets.APPLE_KEY_ISSUER_ID }}
+          apple-key-id: TD2T3G59AS
+          apple-key-issuer-id: 6701bcf4-21c5-4e25-9fd7-76af487a8e20
           apple-key-content: ${{ secrets.APPLE_KEY_CONTENT }}
           team-id: 2ZBVR8AP3W
           team-name: Shashi Ranjan
+          ios-app-id: com.neovasolutions.NeoCal
 
       - name: Upload archive to artifact
         uses: actions/upload-artifact@v3
