@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-	<dict>
-		<key>method</key>
-		<string>app-store</string>
-		<key>signingStyle</key>
-		<string>manual</string>
-		<key>stripSwiftSymbols</key>
-		<true/>
-		<key>teamID</key>
-		<string>2ZBVR8AP3W</string>
-		<key>destination</key>
-		<string>export</string>
-		<key>provisioningProfiles</key>
-		<dict>
-			<key>com.neovasolutions.NeoCal</key>
-			<string>ade7ee5f-9f0c-47c5-9146-17ef6324895e</string>
-		</dict>
-	</dict>
+<dict>
+    <key>method</key>
+    <string>app-store</string>
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>com.neovasolutions.NeoCal</key>
+        <string>ade7ee5f-9f0c-47c5-9146-17ef6324895e</string>
+    </dict>
+    <key>signingCertificate</key>
+    <string>Shashi Ranjan)</string>
+    <key>signingStyle</key>
+    <string>manual</string>
+    <key>stripSwiftSymbols</key>
+    <true/>
+    <key>teamID</key>
+    <string>2ZBVR8AP3W</string>
+</dict>
 </plist>
