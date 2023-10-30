@@ -9,10 +9,8 @@
         <key>com.neovasolutions.NeoCal</key>
         <string>ec8ff2ba-20de-4761-89b9-999c3ffd418a</string>
     </dict>
-    <key>signingCertificate</key>
-    <string>Shashi Ranjan</string>
     <key>signingStyle</key>
-    <string>manual</string>
+    <string>automatic</string>
     <key>stripSwiftSymbols</key>
     <true/>
     <key>teamID</key>
