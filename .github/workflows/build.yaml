@@ -51,7 +51,7 @@ jobs:
           xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
           xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
 
-      - name: Build iOS App
+      - name: Build iOS App 
         run: |
           xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -sdk iphoneos -destination generic/platform=iOS -configuration Release 
 
