@@ -43,7 +43,7 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
-          cat ~/Library/MobileDevice/Provisioning\Profiles\build_pp.mobileprovision
+          tree ~/Library/MobileDevice/Provisioning\
 
       # - name: Clean iOS App
       #   run: |
