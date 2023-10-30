@@ -45,15 +45,15 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
-      - name: Clean iOS App
-        run: |
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
-          xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
+      # - name: Clean iOS App
+      #   run: |
+      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
+      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
+      #     xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
 
       - name: Build iOS App
         run: |
-          xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -sdk iphoneos -destination generic/platform=iOS -configuration Debug CODE_SIGN_IDENTITY="" AD_HOC_CODE_SIGNING_ALLOWED=YES PROVISIONING_PROFILE=$BUILD_PROVISION_PROFILE_UUID PROVISIONING_PROFILE_SPECIFIER=$BUILD_PROVISION_PROFILE_BASE64
+          xcodebuild clean build -project "./NeoCal/NeoCal.xcodeproj" -sdk iphoneos -destination generic/platform=iOS -configuration Debug PROVISIONING_PROFILE=$BUILD_PROVISION_PROFILE_UUID PROVISIONING_PROFILE_SPECIFIER=$BUILD_PROVISION_PROFILE_BASE64
 
       # - name: Build iOS App
       #   env:
