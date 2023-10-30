@@ -85,9 +85,9 @@ jobs:
       #   run: |
       #     xcodebuild clean test-without-building -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination 'platform=iOS Simulator,name=iPhone 15' -configuration Debug -derivedDataPath Build/ -enableCodeCoverage YES
 
-      # - name: Archive iOS App
-      #   run: |
-      #     xcodebuild archive -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath NeoCal/build/NeoCal.xcarchive
+      - name: Archive iOS App
+        run: |
+          xcodebuild archive -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath NeoCal/build/NeoCal.xcarchive
 
       # - name: Export IPA
       #   run: xcodebuild -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
