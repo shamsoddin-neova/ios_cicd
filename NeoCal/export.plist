@@ -14,8 +14,8 @@
 	<string>2ZBVR8AP3W</string>
     <key>provisioningProfiles</key>
     <dict>
-        <key>com.apple.xcode.dsym.com.neovasolutions.NeoCal</key>
-        <string>NeoCal</string>
+        <key>com.neovasolutions.NeoCal</key>
+        <string>ios_distribution</string>
     </dict>
 </dict>
 </plist>
