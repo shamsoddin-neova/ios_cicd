@@ -43,7 +43,8 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
-          tree ~/Library/MobileDevice/Provisioning\
+          brew install tree
+          tree ~/Library/MobileDevice/
 
       # - name: Clean iOS App
       #   run: |
