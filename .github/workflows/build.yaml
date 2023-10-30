@@ -84,7 +84,7 @@ jobs:
           xcodebuild archive -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath NeoCal/build/NeoCal.xcarchive
 
       - name: Export IPA
-        run: xcodebuild -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath IPA -allowProvisioningUpdates -exportArchive CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
+        run: xcodebuild -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath IPA -allowProvisioningUpdates -exportArchive CODE_SIGN_IDENTITY=$DISTRIBUTION_CERTIFICATE_BASE64 PROVISIONING_PROFILE=$BUILD_PROVISION_PROFILE_UUID PROVISIONING_PROFILE_SPECIFIER=$BUILD_PROVISION_PROFILE_BASE64
           
       # - name: List IPA
       #   run: ls IPA
