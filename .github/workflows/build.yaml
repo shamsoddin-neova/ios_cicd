@@ -97,4 +97,4 @@ jobs:
 
       - name: Build and Export IPA
         run: |
-          xcodebuild -exportArchive -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath "./NeoCal"
+          xcodebuild -exportArchive -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath "./NeoCal" -allowProvisioningUpdates
