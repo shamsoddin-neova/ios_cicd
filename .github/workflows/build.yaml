@@ -43,11 +43,11 @@ jobs:
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
 
-      - name: Clean iOS App
-        run: |
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
-          xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
+      # - name: Clean iOS App
+      #   run: |
+      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
+      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
+      #     xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
 
       - name: Build iOS App
         env:
