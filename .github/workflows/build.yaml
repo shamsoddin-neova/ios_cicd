@@ -58,11 +58,11 @@ jobs:
 
       - name: Archive Project
         run: |
-          xcodebuild -workspace Calculator.xcworkspace \
+          xcodebuild -project ./NeoCal/NeoCal.xcodeproj \
           -scheme NeoCal\ iOS \
           -sdk iphoneos \
           -configuration AppStoreDistribution \
-          -archivePath "NeoCal/build/NeoCal.xcarchive" \
+          -archivePath NeoCal/build/NeoCal.xcarchive \
           clean archive | xcpretty
       
     
