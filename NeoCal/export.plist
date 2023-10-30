@@ -11,7 +11,7 @@
     <key>provisioningProfiles</key>
     <dict>
         <key>com.neovasolutions.NeoCal</key>
-        <string>neo_cal_dist</string>
+        <string>ios_distribution</string>
     </dict>
 </dict>
 </plist>
