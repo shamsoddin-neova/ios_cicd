@@ -53,7 +53,7 @@ jobs:
 
       - name: Build iOS App 
         run: |
-          xcodebuild build -workspace "./NeoCal/NeoCal.xcodeproj/project.xcworkspace" -sdk iphoneos -destination generic/platform=iOS -configuration Release -allowProvisioningUpdates -exportOptionsPlist NeoCal/export.plist
+          xcodebuild build -workspace "./NeoCal/NeoCal.xcodeproj/project.xcworkspace" -scheme NeoCal -sdk iphoneos -destination generic/platform=iOS -configuration Release -allowProvisioningUpdates -exportOptionsPlist NeoCal/export.plist
 
       # - name: Sign build
       #   run: codesign -s $DISTRIBUTION_CERTIFICATE_BASE64 -v /path/to/your/binary 
