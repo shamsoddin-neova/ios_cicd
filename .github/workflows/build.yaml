@@ -56,14 +56,14 @@ jobs:
       #     xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -sdk iphoneos -destination generic/platform=iOS -configuration Release CODE_SIGN_IDENTITY=$DISTRIBUTION_CERTIFICATE_BASE64 PROVISIONING_PROFILE=$BUILD_PROVISION_PROFILE_UUID PROVISIONING_PROFILE_SPECIFIER=$BUILD_PROVISION_PROFILE_BASE64
 
 
-      - name: Archive Project
-        run: |
-          xcodebuild -project ./NeoCal/NeoCal.xcodeproj \
-          -scheme NeoCal \
-          -sdk iphoneos \
-          -configuration AppStoreDistribution \
-          -archivePath NeoCal/build/NeoCal.xcarchive \
-          clean archive | xcpretty
+      # - name: Archive Project
+      #   run: |
+      #     xcodebuild -project ./NeoCal/NeoCal.xcodeproj \
+      #     -scheme NeoCal \
+      #     -sdk iphoneos \
+      #     -configuration AppStoreDistribution \
+      #     -archivePath NeoCal/build/NeoCal.xcarchive \
+      #     clean archive | xcpretty
       
     
 
@@ -79,9 +79,9 @@ jobs:
       #   run: |
       #     xcodebuild clean test-without-building -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination 'platform=iOS Simulator,name=iPhone 15' -configuration Debug -derivedDataPath Build/ -enableCodeCoverage YES
 
-      # - name: Archive iOS App
-      #   run: |
-      #     xcodebuild archive -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath NeoCal/build/NeoCal.xcarchive
+      - name: Archive iOS App
+        run: |
+          xcodebuild archive -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath NeoCal/build/NeoCal.xcarchive
 
       - name: Export IPA
         run: xcodebuild -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath IPA -allowProvisioningUpdates -exportArchive CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
