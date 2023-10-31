@@ -1,3 +1,4 @@
-source 'https://rubygems.org'
+# Gemfile
 
-gem fastlane
+source 'https://rubygems.org'
+gem 'fastlane'
