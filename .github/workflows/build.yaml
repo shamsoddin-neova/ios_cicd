@@ -45,11 +45,11 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
-      - name: Clean iOS App
-        run: |
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build/Release-iphoneos
-          xcodebuild clean -project "./ios-ci-cd.xcodeproj"
+      # - name: Clean iOS App
+      #   run: |
+      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build
+      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build/Release-iphoneos
+      #     xcodebuild clean -project "./ios-ci-cd.xcodeproj"
 
       - name: Build iOS App 
         run: |
