@@ -6,12 +6,12 @@ platform :ios do
   
     desc "Build Binary"
     lane :build do
-      # Add your build tasks here
+        signing
     end
   
     desc "Release"
     lane :release do
-      # Add your release tasks here
+        build
     end
   end
   
