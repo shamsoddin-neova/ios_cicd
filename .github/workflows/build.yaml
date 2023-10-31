@@ -52,9 +52,9 @@ jobs:
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
 
-      - name: Build iOS App 
-        run: |
-          xcodebuild build -project "ios-ci-cd.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
+      # - name: Build iOS App 
+      #   run: |
+      #     xcodebuild build -project "ios-ci-cd.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
 
 
       - name: Archive iOS App
@@ -63,8 +63,8 @@ jobs:
 
       - name: Export IPA
         run: |
-         # xcodebuild -archivePath ios-ci-cd.xcarchive -exportOptionsPlist export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
-          xcodebuild -exportArchive -archivePath ios-ci-cd.xcarchive -exportPath ios-ci-cdf -exportOptionsPlist export.plist CODE_SIGN_IDENTITY="Apple Distribution" COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
+         # xcodebuild -archivePath ios-ci-cd.xcarchive -exportOptionsPlist export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO 
+          xcodebuild -exportArchive -archivePath ios-ci-cd.xcarchive -exportPath ios-ci-cdf -exportOptionsPlist export.plist CODE_SIGN_IDENTITY="" COMPILER_INDEX_STORE_ENABLE=NO
           
       # - name: List IPA
       #   run: ls IPA
