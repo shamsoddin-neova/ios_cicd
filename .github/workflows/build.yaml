@@ -51,11 +51,11 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
-      # - name: Clean iOS App
-      #   run: |
-      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
-      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
-      #     xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
+      - name: Clean iOS App
+        run: |
+          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
+          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
+          xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
 
       # - name: Build iOS App
       #   run: |
@@ -73,11 +73,11 @@ jobs:
       
     
 
-      # - name: Build iOS App
-      #   env:
-      #     IPHONEOS_DEPLOYMENT_TARGET: 16.2
-      #   run: |
-      #     xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
+      - name: Build iOS App
+        env:
+          IPHONEOS_DEPLOYMENT_TARGET: 16.2
+        run: |
+          xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
         # -allowProvisioningUpdates -authenticationKeyID 'SP634SRSSX' -authenticationKeyIssuerID '6701bcf4-21c5-4e25-9fd7-76af487a8e20' 
 
       # - name: Test app
