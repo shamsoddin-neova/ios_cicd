@@ -58,7 +58,7 @@ jobs:
       - name: Export IPA
         run: |
          # xcodebuild -archivePath ios-ci-cd.xcarchive -exportOptionsPlist export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
-          xcodebuild -exportArchive -archivePath ios-ci-cd.xcarchive -exportPath ios-ci-cdf -exportOptionsPlist export.plist -allowProvisioningUpdates
+          xcodebuild -exportArchive -archivePath ios-ci-cd.xcarchive -exportPath ios-ci-cdf -exportOptionsPlist export.plist CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
           
       # - name: List IPA
       #   run: ls IPA
