@@ -1,17 +1,17 @@
-platform: ios do
+platform :ios do
     desc "Sync Signing"
     lane :signing do
-
+      # Add your signing tasks here
     end
-
+  
     desc "Build Binary"
     lane :build do
-
+      # Add your build tasks here
     end
-
+  
     desc "Release"
-    lane : release do
-
+    lane :release do
+      # Add your release tasks here
     end
-end
-
+  end
+  
