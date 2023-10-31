@@ -44,8 +44,8 @@ end
    ) if File.exist? File.expand_path("~/Library/Keychains/#{keychain_name}-db")
 
    create_keychain(
-     name: keychain_name,
-     password: keychain_password,
+     name: "signing",
+     password: "temp",
      default_keychain: true,
      unlock: true,
      timeout: 3600
