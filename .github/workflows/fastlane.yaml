@@ -1,7 +1,7 @@
 name: Build And Deploy iOS App To App Store
 on:
   push:
-    branches: master
+    branches: ios-cicd-sj
 jobs:
   build_and_deploy_ios_app_to_app_store:
     runs-on: macos-13
@@ -12,59 +12,12 @@ jobs:
       - name: Setup Xcode
         run: sudo xcode-select -s /Applications/Xcode_15.0.1.app
 
-      - name: Install The Apple Certificate And Provisioning Profile
-        env:
-          DISTRIBUTION_PROFILE_BASE64: ${{ secrets.DISTRIBUTION_PROFILE_BASE64 }}
-          DISTRIBUTION_CERTIFICATE_BASE64: ${{ secrets.DISTRIBUTION_CERTIFICATE_BASE64 }}
-          BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
-          P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
-          BUILD_PROVISION_PROFILE_BASE64: ${{ secrets.BUILD_PROVISION_PROFILE_BASE64 }}
-          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
-          BUILD_PROVISION_PROFILE_UUID: ${{ secrets.BUILD_PROVISION_PROFILE_UUID }}
-        run: |
-          # create variables
-          CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          CERTIFICATE_PATH_1=$RUNNER_TEMP/dist_certificate.p12
-          PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
-          PP_PATH_1=$RUNNER_TEMP/dist_pp.mobileprovision
-          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+      - name:
+        run: gem install bundler
 
-          # import certificate and provisioning profile from secrets
-          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
-          echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $PP_PATH
+      - name: Install gems
+        run: bundle install
 
-          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH_1
-          echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $PP_PATH_1
-
-          # create temporary keychain
-          security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
-          security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
-          security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
-
-          # import certificate to keychain
-          security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
-          security list-keychain -d user -s $KEYCHAIN_PATH
-
-          # apply provisioning profile
-          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-          cp $PP_PATH_1 ~/Library/MobileDevice/Provisioning\ Profiles
-          ls ~/Library/MobileDevice/Provisioning\ Profiles
-
-
-      - name: Build iOS App 
-        run: |
-          xcodebuild build -project "ios-ci-cd.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
-
-
-      - name: Archive iOS App
-        run: |
-          xcodebuild archive -project "ios-ci-cd.xcodeproj" -scheme "ios-ci-cd" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath ios-ci-cd.xcarchive
-
-      - name: Export IPA
-        run: |
-         # xcodebuild -archivePath ios-ci-cd.xcarchive -exportOptionsPlist export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
-          xcodebuild -exportArchive -archivePath ios-ci-cd.xcarchive -exportPath ios-ci-cdf -exportOptionsPlist export.plist CODE_SIGN_IDENTITY="" COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
-          
-      # - name: List IPA
-      #   run: ls IPA
+      - name: fastlane test
+        run: fastlane lanes
+      

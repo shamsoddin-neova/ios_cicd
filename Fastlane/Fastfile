@@ -1,0 +1,17 @@
+platform: ios do
+    desc "Sync Signing"
+    lane :signing do
+
+    end
+
+    desc "Build Binary"
+    lane :build do
+
+    end
+
+    desc "Release"
+    lane : release do
+
+    end
+end
+
