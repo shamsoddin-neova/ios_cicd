@@ -1,2 +1,0 @@
-Target dependency graph (1 target)
-Target 'NeoCal' in project 'NeoCal' (no dependencies)
