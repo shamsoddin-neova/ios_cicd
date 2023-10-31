@@ -30,9 +30,20 @@ lane :fetch_and_increment_build_number do
  )
 end
 
+desc "Generate App Store certificate"
+lane :generate_certificate do
+  cert(
+    development: false, # Set to false for App Store distribution
+    output_path: "./cert" # Replace with the actual path
+  )
+end
+
 
  desc "Installs signing certificate in the keychain and downloads provisioning profiles from App Store Connect"
  lane :prepare_signing do |options|
+
+   generate_certificate
+
    team_id = CredentialsManager::AppfileConfig.try_fetch_value(:team_id)
    api_key = lane_context[SharedValues::APP_STORE_CONNECT_API_KEY]
 
