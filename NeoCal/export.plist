@@ -8,7 +8,6 @@
 	<true/>
 	<key>teamID</key>
 	<string>2ZBVR8AP3W</string>
-    <key>provisioningProfiles</key>
     <key>signingStyle</key>
     <string>automatic</string>
     <key>provisioningProfiles</key>    
