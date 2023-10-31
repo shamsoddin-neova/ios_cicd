@@ -62,7 +62,7 @@ end
    sigh(
      adhoc: options[:adhoc],
      api_key: api_key,
-     readonly: true
+     readonly: false
    )
  end
 
