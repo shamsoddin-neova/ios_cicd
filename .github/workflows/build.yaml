@@ -1,7 +1,7 @@
 name: Build And Deploy iOS App To App Store
 on:
   push:
-    branches: master
+    branches: ios-ci-cd
 jobs:
   build_and_deploy_ios_app_to_app_store:
     runs-on: macos-13
@@ -45,16 +45,16 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
-      # - name: Clean iOS App
-      #   run: |
-      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
-      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
-      #     xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
+      - name: Clean iOS App
+        run: |
+          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
+          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
+          xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
 
       - name: Build iOS App 
         run: |
-          xcodebuild build -workspace "./NeoCal/NeoCal.xcodeproj/project.xcworkspace" -scheme NeoCal -sdk iphoneos -destination generic/platform=iOS -configuration Release -allowProvisioningUpdates
-
+          # xcodebuild build -workspace "ios-ci-cd.xcodeproj/project.xcworkspace" -scheme ios-ci-cd -sdk iphoneos -destination generic/platform=iOS -configuration Release -allowProvisioningUpdates
+          xcodebuild build -project "ios-ci-cd.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
       # - name: Sign build
       #   run: codesign -s $DISTRIBUTION_CERTIFICATE_BASE64 -v /path/to/your/binary 
       # - name: Archive Project
