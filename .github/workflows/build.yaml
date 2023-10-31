@@ -95,6 +95,6 @@ jobs:
       # - name: List IPA
       #   run: ls IPA
 
-      - name: Build and Export IPA
+      - name: Export IPA
         run: |
           xcodebuild -exportArchive -archivePath NeoCal/build/NeoCal.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath "./NeoCal" -allowProvisioningUpdates
