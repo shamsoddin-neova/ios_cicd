@@ -1,0 +1,43 @@
+<!-- <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>method</key>
+    <string>app-store</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>teamID</key>
+	<string>2ZBVR8AP3W</string>
+    <key>signingStyle</key>
+    <string>automatic</string>
+    <key>provisioningProfiles</key>    
+    <dict>
+        <key>com.neovasolutions.NeoCal</key>
+        <string>b21c68da-abbe-4ce1-a87a-9dc37ca25f20</string>
+    </dict>
+</dict>
+</plist> -->
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>compileBitcode</key>
+	<false/>
+	<key>method</key>
+	<string>development</string>
+	<key>signingStyle</key>
+	<string>automatic</string>
+	<key>stripSwiftSymbols</key>
+	<true/>
+	<key>teamID</key>
+	<string>2ZBVR8AP3W</string>
+	<key>thinning</key>
+	<string>&lt;none&gt;</string>
+    <key>provisioningProfiles</key>    
+    <dict>
+        <key>com.neovasolutions.ios-ci-cd</key>
+        <string>b2d226b1-f98f-43cd-b65d-6d2a7ea445cb</string>
+    </dict>
+</dict>
+</plist>
