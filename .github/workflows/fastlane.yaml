@@ -24,11 +24,6 @@ jobs:
         run: |
             echo $CERTIFICATE_BASE64 | base64 --decode > signing-cert.p12
 
-      - name: Install certificate if not present
-        continue-on-error: true
-        run: |
-          fastlane cert -u cloudsupport@neovasolutions.in ${{ secrets.AC_PASSWORD }}
-
       - name: Build & deploy iOS release
         run: bundle exec fastlane ios build_upload_testflight
         env:
