@@ -34,6 +34,11 @@
 	<string>2ZBVR8AP3W</string>
 	<key>thinning</key>
 	<string>&lt;none&gt;</string>
+    <key>provisioningProfiles</key>    
+    <dict>
+        <key>com.neovasolutions.NeoCal</key>
+        <string>b21c68da-abbe-4ce1-a87a-9dc37ca25f20</string>
+    </dict>
 </dict>
 </plist>
 
