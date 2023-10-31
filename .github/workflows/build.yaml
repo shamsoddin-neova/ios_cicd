@@ -45,44 +45,15 @@ jobs:
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
-      # - name: Clean iOS App
-      #   run: |
-      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build
-      #     xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build/Release-iphoneos
-      #     xcodebuild clean -project "./ios-ci-cd.xcodeproj"
 
       - name: Build iOS App 
         run: |
-          # xcodebuild build -workspace "ios-ci-cd.xcodeproj/project.xcworkspace" -scheme ios-ci-cd -sdk iphoneos -destination generic/platform=iOS -configuration Release -allowProvisioningUpdates
           xcodebuild build -project "ios-ci-cd.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
-      # - name: Sign build
-      #   run: codesign -s $DISTRIBUTION_CERTIFICATE_BASE64 -v /path/to/your/binary 
-      # - name: Archive Project
-      #   run: |
-      #     xcodebuild -project ./NeoCal/NeoCal.xcodeproj \
-      #     -scheme NeoCal \
-      #     -sdk iphoneos \
-      #     -configuration AppStoreDistribution \
-      #     -archivePath NeoCal/build/NeoCal.xcarchive \
-      #     clean archive | xcpretty
-      
-    
 
-      # - name: Build iOS App
-      #   env:
-      #     IPHONEOS_DEPLOYMENT_TARGET: 16.2
-      #   run: |
-      #     xcodebuild build -project "./NeoCal/NeoCal.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
-        # -allowProvisioningUpdates -authenticationKeyID 'SP634SRSSX' -authenticationKeyIssuerID '6701bcf4-21c5-4e25-9fd7-76af487a8e20' 
-
-      # - name: Test app
-      #   working-directory: ./NeoCal
-      #   run: |
-      #     xcodebuild clean test-without-building -project "./NeoCal/NeoCal.xcodeproj" -scheme "NeoCal" -destination 'platform=iOS Simulator,name=iPhone 15' -configuration Debug -derivedDataPath Build/ -enableCodeCoverage YES
 
       - name: Archive iOS App
         run: |
-          xcodebuild archive -project "ios-ci-cd.xcodeproj" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath ios-ci-cd.xcarchive
+          xcodebuild archive -project "ios-ci-cd.xcodeproj" -scheme "ios-ci-cd" -destination generic/platform=iOS CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates -archivePath ios-ci-cd.xcarchive
 
       # - name: Export IPA
       #   run: xcodebuild -archivePath ios-ci-cd.xcarchive -exportOptionsPlist NeoCal/export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=- AD_HOC_CODE_SIGNING_ALLOWED=YES COMPILER_INDEX_STORE_ENABLE=NO -allowProvisioningUpdates
