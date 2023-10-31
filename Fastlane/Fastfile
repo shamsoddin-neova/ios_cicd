@@ -9,7 +9,7 @@ platform :ios do
         in_house: false # detecting this via ASC private key not currently supported
       )
     end
-end
+
 
 desc "Bump build number based on most recent TestFlight build number"
 lane :fetch_and_increment_build_number do
@@ -89,7 +89,7 @@ lane :build_release do |options|
 
  # build the app
  gym(
-   scheme: "example-scheme", # replace with name of your project’s scheme
+   scheme: "ios-ci-cd", # replace with name of your project’s scheme
    output_name: output_name,
    configuration: "Release",
    export_options: {
@@ -124,3 +124,4 @@ desc "Build and upload to TestFlight"
      build_release
      upload_release
    end
+end
