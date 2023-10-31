@@ -47,9 +47,9 @@ jobs:
 
       - name: Clean iOS App
         run: |
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build
-          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/NeoCal/build/Release-iphoneos
-          xcodebuild clean -project "./NeoCal/NeoCal.xcodeproj"
+          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build
+          xattr -w com.apple.xcode.CreatedByBuildSystem true /Users/runner/work/ios_cicd/ios_cicd/build/Release-iphoneos
+          xcodebuild clean -project "./ios-ci-cd.xcodeproj"
 
       - name: Build iOS App 
         run: |
