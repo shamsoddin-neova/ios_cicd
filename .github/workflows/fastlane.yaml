@@ -1,7 +1,7 @@
 name: Build And Deploy iOS App To App Store
 on:
   push:
-    branches: temp
+    branches: ios-cicd-sj
 jobs:
   build_and_deploy_ios_app_to_app_store:
     runs-on: macos-13
