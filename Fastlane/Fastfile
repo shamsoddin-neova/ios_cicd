@@ -16,20 +16,20 @@ platform :ios do
     team_id = ENV['TEAM_ID']
     api_key = ENV["ASC_KEY_ID"],
 
-    keychain_name = "com.neovasolutions.ios-ci-cd"
+    keychain_name = "com.neovasolutions.ios-ci-cd.keychain"
     keychain_password = ENV['FASTLANE_PASSWORD']
 
     delete_keychain(
       name: keychain_name
     ) if File.exist? File.expand_path("~/Library/Keychains/#{keychain_name}-db")
 
-    # create_keychain(
-    #   name: keychain_name,
-    #   password: keychain_password,
-    #   default_keychain: true,
-    #   unlock: true,
-    #   timeout: 3600
-    # )
+    create_keychain(
+      name: keychain_name,
+      password: keychain_password,
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600
+    )
 
     import_certificate(
       certificate_path: ENV["SIGNING_KEY_FILE_PATH"],
