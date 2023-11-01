@@ -14,7 +14,7 @@ platform :ios do
   lane :prepare_signing do |options|
 
     team_id = ENV['TEAM_ID']
-    api_key = ENV["ASC_KEY"],
+    api_key = ENV["ASC_KEY_ID"],
 
     keychain_name = "com.neovasolutions.ios-ci-cd"
     keychain_password = ENV['FASTLANE_PASSWORD']
@@ -48,6 +48,5 @@ platform :ios do
   desc "Build and upload to TestFlight"
    lane :build_upload_testflight do
      load_asc_api_key
-     prepare_signing
    end
 end
