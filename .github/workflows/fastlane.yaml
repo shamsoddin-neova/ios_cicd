@@ -32,4 +32,4 @@ jobs:
           ASC_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
           SIGNING_KEY_PASSWORD: ${{ secrets.P12_PASSWORD }}
           SIGNING_KEY_FILE_PATH: signing-cert.p12
-          FASTLANE_PASSWORD: ${{ secrets.AC_PASSWORD }}
+          FASTLANE_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
