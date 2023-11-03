@@ -17,7 +17,7 @@
     <key>provisioningProfiles</key>    
     <dict>
         <key>com.neovasolutions.ios-dev-poc</key>
-        <string>fastlane-generated-dist-profile</string>
-    </dict>
+        <string>026c2507-20d9-4244-91b7-c38ac88c9d65</string>
+    </dict> 
 </dict>
 </plist>
