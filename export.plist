@@ -5,7 +5,7 @@
 	<key>compileBitcode</key>
 	<false/>
 	<key>method</key>
-	<string>development</string>
+	<string>app-store</string>
 	<key>signingStyle</key>
 	<string>automatic</string>
 	<key>stripSwiftSymbols</key>
@@ -16,8 +16,8 @@
 	<string>&lt;none&gt;</string>
     <key>provisioningProfiles</key>    
     <dict>
-        <key>com.neovasolutions.ios-ci-cd</key>
-        <string>ios-ci-cid-dist-profile</string>
+        <key>com.neovasolutions.ios-dev-poc</key>
+        <string>e993c377-30af-44a8-8c5e-7682925f3e49</string>
     </dict>
 </dict>
 </plist>
