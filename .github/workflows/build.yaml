@@ -23,20 +23,20 @@ jobs:
           BUILD_PROVISION_PROFILE_UUID: ${{ secrets.BUILD_PROVISION_PROFILE_UUID }}
         run: |
           # create variables
-          BUILD_CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          BUILD_PROFILE_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          # BUILD_CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          # BUILD_PROFILE_PATH=$RUNNER_TEMP/build_pp.mobileprovision
 
-          # DISTRIBUTION_CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          # DISTRIBUTION_PROFILE_PATH=$RUNNER_TEMP/build_pp.mobileprovision
+          DISTRIBUTION_CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
+          DISTRIBUTION_PROFILE_PATH=$RUNNER_TEMP/build_pp.mobileprovision
 
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
-          echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $BUILD_CERTIFICATE_PATH
-          echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $BUILD_PROFILE_PATH
+          # echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $BUILD_CERTIFICATE_PATH
+          # echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $BUILD_PROFILE_PATH
 
-          # echo -n "$DISTRIBUTION_CERTIFICATE_BASE64" | base64 --decode -o $DISTRIBUTION_CERTIFICATE_PATH
-          # echo -n "$DISTRIBUTION_PROFILE_BASE64" | base64 --decode -o $DISTRIBUTION_PROFILE_PATH
+          echo -n "$DISTRIBUTION_CERTIFICATE_BASE64" | base64 --decode -o $DISTRIBUTION_CERTIFICATE_PATH
+          echo -n "$DISTRIBUTION_PROFILE_BASE64" | base64 --decode -o $DISTRIBUTION_PROFILE_PATH
 
           # create temporary keychain
           security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
@@ -44,14 +44,14 @@ jobs:
           security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
 
           # import certificate to keychain
-          security import $BUILD_CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
-          # security import $DISTRIBUTION_CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          # security import $BUILD_CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+          security import $DISTRIBUTION_CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
           security list-keychain -d user -s $KEYCHAIN_PATH
 
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
-          cp $BUILD_PROFILE_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-          # cp $DISTRIBUTION_PROFILE_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          # cp $BUILD_PROFILE_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+          cp $DISTRIBUTION_PROFILE_PATH ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
 
