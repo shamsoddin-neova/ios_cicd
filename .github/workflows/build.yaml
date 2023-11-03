@@ -59,7 +59,7 @@ jobs:
 
       - name: Archive iOS App
         run: |
-          xcodebuild archive -project "ios-dev-poc/ios-dev-poc/ios-dev-poc.xcodeproj" -scheme "ios-dev-poc" -destination generic/platform=iOS COMPILER_INDEX_STORE_ENABLE=NO -archivePath ios-ci-cd.xcarchive
+          xcodebuild archive -project "ios-dev-poc/ios-dev-poc/ios-dev-poc.xcodeproj" -scheme "ios-dev-poc" -destination generic/platform=iOS COMPILER_INDEX_STORE_ENABLE=NO -archivePath ios-ci-cd.xcarchive -allowProvisioningUpdates
 
       - name: Export IPA
         run: |
