@@ -24,17 +24,12 @@ jobs:
         run: |
           # create variables
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
-          CERTIFICATE_PATH_1=$RUNNER_TEMP/dist_certificate.p12
           PP_PATH=$RUNNER_TEMP/build_pp.mobileprovision
-          PP_PATH_1=$RUNNER_TEMP/dist_pp.mobileprovision
           KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
 
           # import certificate and provisioning profile from secrets
           echo -n "$BUILD_CERTIFICATE_BASE64" | base64 --decode -o $CERTIFICATE_PATH
           echo -n "$BUILD_PROVISION_PROFILE_BASE64" | base64 --decode -o $PP_PATH
-
-          echo -n "$DISTRIBUTION_PROFILE_BASE64" | base64 --decode -o $CERTIFICATE_PATH_1
-          echo -n "$DISTRIBUTION_CERTIFICATE_BASE64" | base64 --decode -o $PP_PATH_1
 
           # create temporary keychain
           security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
@@ -48,7 +43,6 @@ jobs:
           # apply provisioning profile
           mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
           cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
-          # cp $PP_PATH_1 ~/Library/MobileDevice/Provisioning\ Profiles
           ls ~/Library/MobileDevice/Provisioning\ Profiles
 
 
@@ -66,5 +60,5 @@ jobs:
          # xcodebuild -archivePath ios-ci-cd.xcarchive -exportOptionsPlist export.plist -exportPath IPA -exportArchive CODE_SIGN_IDENTITY=""  COMPILER_INDEX_STORE_ENABLE=NO 
           xcodebuild -exportArchive -archivePath ios-ci-cd.xcarchive -exportPath ios-dev-poc -exportOptionsPlist export.plist COMPILER_INDEX_STORE_ENABLE=NO
           
-      # - name: List IPA
-      #   run: ls IPA
+      # - name: List file for check ipa
+      #   run: ls
