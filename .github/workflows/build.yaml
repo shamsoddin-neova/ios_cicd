@@ -1,7 +1,7 @@
 name: XCODE CLI
 on:
   push:
-    branches: ios-cicd-sj
+    branches: sham
 jobs:
   build_and_deploy_ios_app_to_app_store:
     runs-on: macos-13
